@@ -9,7 +9,6 @@ How it works
 Sassy is a command-line program that interprets input macro tags.
 
 **Macros**
-Input sample.txt
 ::
 
     
@@ -28,7 +27,7 @@ Input sample.txt
    here's a call to the same macro with a different parameter:
    %exec testMacro(2);
 
-Running *sassy* on 'sample.txt' will output the following...
+Running **sassy** on the above text file will output the following...
 ::
 
     
@@ -45,7 +44,6 @@ Running *sassy* on 'sample.txt' will output the following...
 
 
 **Nested variable resolution**
-Input nested_vars.txt
 ::
 
     
@@ -64,7 +62,7 @@ Input nested_vars.txt
    here's a call to the same macro with a different parameter:
    %exec testMacro(2);
 
-Running *sassy* on 'sample.txt' will output the following...
+Running **sassy** on the above text file will output the following...
 ::
 
     
@@ -79,7 +77,6 @@ Running *sassy* on 'sample.txt' will output the following...
 
 
 **Loops**
-Input sample.txt
 ::
 
     
@@ -98,7 +95,7 @@ Input sample.txt
        this other loop will execute &counterVar. times, and references a different variable each time: &loopVar&counterVar..
    %pend;
 
-Running *sassy* on 'sample.txt' will output the following...
+Running **sassy** on the above text file will output the following...
 ::
 
     
@@ -123,7 +120,7 @@ Here's what you need to do to install sassy:
 Python 3.6
 ~~~~~~~~~~
 
-sassy is compatible with **Python 3.6 and later**.
+Sassy is compatible with **Python 3.6 and later**.
 
 On Unix systems, install Python 3.6 (or later) via your package manager (apt, rpm, yum, brew).
 Alternatively, you can download an installation package from the `official

@@ -1,0 +1,15 @@
+%let var1 = some value;
+%let var2 = some other value;
+%let varNum = 1;
+
+%macro testMacro(param1);
+    variables can be nested to form references to other variables: &var&varNum..
+    ...and also nest parameters as with variables: &var&param1..
+%mend;
+
+here's how you call a macro:
+%exec testMacro(1);
+
+here's a call to the same macro with a different parameter:
+%exec testMacro(2);
+

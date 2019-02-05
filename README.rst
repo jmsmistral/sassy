@@ -6,22 +6,20 @@ A simple but powerful templating language for text interpolation inspired by sas
 How it works
 ------------
 
-If these are the contents of text file 'sample.txt'
+Sassy is a command-line program that interprets input macro tags.
+
+**Macros**
+Input sample.txt
 ::
 
     
    %let var1 = some value;
    %let var2 = some other value;
-   %let varNum = 1;
 
    %macro testMacro(param1);
        this text will show whenever the macro is called.
-
        variables can be referenced like this: &var1.
-       variables can be nested to form references to other variables: &var&varNum..
-
        we can reference macro parameters just like variables: &param1.
-       ...and also nest these as with variables: &var&param1..
    %mend;
 
    here's how you call a macro:
@@ -30,6 +28,61 @@ If these are the contents of text file 'sample.txt'
    here's a call to the same macro with a different parameter:
    %exec testMacro(2);
 
+Running *sassy* on 'sample.txt' will output the following...
+::
+
+    
+   $ sassy test.txt
+   here's how you call a macro:
+       this text will show whenever the macro is called.
+       variables can be referenced like this: somevalue
+       we can reference macro parameters just like variables: 1
+
+   here's a call to the same macro with a different parameter:
+       this text will show whenever the macro is called.
+       variables can be referenced like this: somevalue
+       we can reference macro parameters just like variables: 2
+
+
+**Nested variable resolution**
+Input nested_vars.txt
+::
+
+    
+   %let var1 = some value;
+   %let var2 = some other value;
+   %let varNum = 1;
+
+   %macro testMacro(param1);
+       variables can be nested to form references to other variables: &var&varNum..
+       ...and also nest parameters as with variables: &var&param1..
+   %mend;
+
+   here's how you call a macro:
+   %exec testMacro(1);
+
+   here's a call to the same macro with a different parameter:
+   %exec testMacro(2);
+
+Running *sassy* on 'sample.txt' will output the following...
+::
+
+    
+   $ sassy test.txt
+   here's how you call a macro:
+       variables can be nested to form references to other variables: somevalue
+       ...and also nest parameters as with variables: somevalue
+
+   here's a call to the same macro with a different parameter:
+       variables can be nested to form references to other variables: somevalue
+       ...and also nest parameters as with variables: someothervalue
+
+
+**Loops**
+Input sample.txt
+::
+
+    
    this is how you execute a loop:
    %procloop (3) loopCounter;
        this loop will execute &loopCounter. times.
@@ -45,29 +98,11 @@ If these are the contents of text file 'sample.txt'
        this other loop will execute &counterVar. times, and references a different variable each time: &loopVar&counterVar..
    %pend;
 
-Running *sassy* on it will output the following...
+Running *sassy* on 'sample.txt' will output the following...
 ::
 
     
    $ sassy test.txt
-   here's how you call a macro:
-       this text will show whenever the macro is called.
-
-       variables can be referenced like this: somevalue
-       variables can be nested to form references to other variables: somevalue
-
-       we can reference macro parameters just like variables: 1
-       ...and also nest these as with variables: somevalue
-
-   here's a call to the same macro with a different parameter:
-       this text will show whenever the macro is called.
-
-       variables can be referenced like this: somevalue
-       variables can be nested to form references to other variables: somevalue
-
-       we can reference macro parameters just like variables: 2
-       ...and also nest these as with variables: someothervalue
-
    this is how you execute a loop:
        this loop will execute 0 times.
        this loop will execute 1 times.
@@ -80,9 +115,8 @@ Running *sassy* on it will output the following...
        this other loop will execute 3 times, and references a different variable each time: fourthloop
 
 
-
-Installatioe
--------------
+Installation
+------------
 
 Here's what you need to do to install sassy:
 

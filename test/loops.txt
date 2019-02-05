@@ -1,0 +1,14 @@
+this is how you execute a loop:
+%procloop (3) loopCounter;
+    this loop will execute &loopCounter. times.
+%pend;
+
+...you can also use a variable to set the number of iterations:
+%let loopVar0 = first loop;
+%let loopVar1 = second loop;
+%let loopVar2 = third loop;
+%let loopVar3 = fourth loop;
+%let numLoops = 4;
+%procloop (&numLoops.) counterVar;
+    this other loop will execute &counterVar. times, and references a different variable each time: &loopVar&counterVar..
+%pend;

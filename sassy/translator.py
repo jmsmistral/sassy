@@ -16,6 +16,7 @@
 #along with sassy. If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+
 from .error import *
 
 
@@ -65,7 +66,6 @@ class Translator(object):
                 )
 
             self._currentStep += 1
-        print()  # add a newline at the end of processing
 
     def _translate_plaintext(self, stepNum):
         print(self.translationSteps['outputSteps'][stepNum]['text'], end='', file=sys.stdout)

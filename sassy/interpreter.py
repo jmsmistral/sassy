@@ -16,6 +16,7 @@
 #along with sassy. If not, see <http://www.gnu.org/licenses/>.
 
 import sys
+
 from .scanner import Scanner
 from .parser import Parser
 from .translator import Translator

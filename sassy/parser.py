@@ -240,18 +240,18 @@ class Parser(object):
         Process plain text context.
         """
         outputStep = {}
-        isWhitespaceLine = 0
+        isNotWhitespaceLine = 0
 
         # concat current token to output string
         plainTextLine = ''
         for token in tokenStack:
-            if self._match(token, self._get_whitespace_token_list()):
-                isWhitespaceLine = 1
+            if not self._match(token, self._get_whitespace_token_list()):
+                isNotWhitespaceLine = 1
             plainTextLine += token.lexeme
 
         # if option is set, ignore all plaintext lines
-        # composed only of whitespace tokens
-        if self._ignoreWhitespace and isWhitespaceLine:
+        # that are composed only of whitespace tokens
+        if (not isNotWhitespaceLine) and self._ignoreWhitespace:
             return
 
         # store plain text data

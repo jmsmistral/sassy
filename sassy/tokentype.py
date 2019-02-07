@@ -19,7 +19,7 @@ from enum import Enum
 
 
 class TokenType(Enum):
-    # sassy - specific keywords
+    # sassy-specific keywords
     MACRO_START     = 1
     MACRO_END       = 2
     LET             = 3
@@ -30,25 +30,10 @@ class TokenType(Enum):
     # single character tokens
     LEFT_PAREN      = 7
     RIGHT_PAREN     = 8
-    LEFT_BRACE      = 9
-    RIGHT_BRACE     = 10
     COMMA           = 11
     DOT             = 12
-    MINUS           = 13
-    PLUS            = 14
     SEMICOLON       = 15
-    SLASH           = 16
-    STAR            = 17
-    PERCENT         = 18
     AMPERSAND       = 19
-    DOLLAR          = 20
-    HASH            = 21
-    AT              = 22
-    PIPE            = 23
-    QUESTION_MARK   = 24
-    COLON           = 25
-    LEFT_SQR_PAREN  = 26
-    RIGHT_SQR_PAREN = 27
 
     SPACE           = 28
     TAB             = 29
@@ -56,33 +41,12 @@ class TokenType(Enum):
     NEW_LINE        = 31
 
     # one or two character tokens
-    BANG            = 32
-    BANG_EQUAL      = 33
     EQUAL           = 34
     EQUAL_EQUAL     = 35
-    GREATER         = 36
-    GREATER_EQUAL   = 37
-    LESS            = 38
-    LESS_EQUAL      = 39
 
     # literals
     IDENTIFIER      = 40
-    STRING          = 41
     NUMBER          = 42
 
     # other keywords
-    AND             = 43
-    CLASS           = 44
-    ELSE            = 45
-    FALSE           = 46
-    FOR             = 47
-    IF              = 48
-    NIL             = 49
-    OR              = 50
-    PRINT           = 51
-    RETURN          = 52
-    SUPER           = 53
-    TRUE            = 54
-    VAR             = 55
-    WHILE           = 56
     EOF             = 57

@@ -51,79 +51,32 @@ class Scanner(object):
             self.add_token(TokenType.LEFT_PAREN)
         elif c == ')':
             self.add_token(TokenType.RIGHT_PAREN)
-        elif c == '{':
-            self.add_token(TokenType.LEFT_BRACE)
-        elif c == '}':
-            self.add_token(TokenType.RIGHT_BRACE)
         elif c == ',':
             self.add_token(TokenType.COMMA)
         elif c == '.':
             self.add_token(TokenType.DOT)
-        elif c == '-':
-            self.add_token(TokenType.MINUS)
-        elif c == '+':
-            self.add_token(TokenType.PLUS)
         elif c == ';':
             self.add_token(TokenType.SEMICOLON)
-        elif c == '*':
-            self.add_token(TokenType.STAR)
-        # elif c == '%':
-        #     self.add_token(TokenType.PERCENT)
-        elif c == '$':
-            self.add_token(TokenType.DOLLAR)
-        elif c == '#':
-            self.add_token(TokenType.HASH)
-        elif c == '@':
-            self.add_token(TokenType.AT)
-        elif c == '|':
-            self.add_token(TokenType.PIPE)
         elif c == '&':
             self.add_token(TokenType.AMPERSAND)
-        elif c == ':':
-            self.add_token(TokenType.COLON)
-        elif c == '?':
-            self.add_token(TokenType.QUESTION_MARK)
-        elif c == '[':
-            self.add_token(TokenType.LEFT_SQR_PAREN)
-        elif c == ']':
-            self.add_token(TokenType.RIGHT_SQR_PAREN)
-        elif c == '!':
-            self.add_token(
-                TokenType.BANG_EQUAL if self._match('=') else TokenType.BANG)
         elif c == '=':
             self.add_token(
                 TokenType.EQUAL_EQUAL if self._match('=') else TokenType.EQUAL)
-        elif c == '<':
-            self.add_token(
-                TokenType.LESS_EQUAL if self._match('=') else TokenType.LESS)
-        elif c == '>':
-            self.add_token(
-                TokenType.GREATER_EQUAL if self._match('=') else TokenType.GREATER)
-        elif c == '/':
-            if self._match('/'):
-                while (self._peek() != '\n' and not self._is_at_end()):
-                    self._advance()
-            else:
-                self.add_token(TokenType.SLASH)
         elif c == ' ':
             self.add_token(TokenType.SPACE)
-        elif c == '\r':
-            self.add_token(TokenType.CARRIAGE_RETURN)
         elif c == '\t':
             self.add_token(TokenType.TAB)
+        elif c == '\r':
+            self.add_token(TokenType.CARRIAGE_RETURN)
         elif c == '\n':
             self.add_token(TokenType.NEW_LINE)
             self._line += 1
-        elif c == '"':
-            self.identifier()
-        elif c == '\'':
-            self.identifier()
         elif self._is_digit(c):
             self.number()
         elif self._is_alpha(c):
             self.identifier()
         else:
-            self._scan_error(self._line, self._current, 'Unexpected character.')
+            self.identifier()
 
     def _scan_error(self, line, where, message):
         errorText = '[line {line} char {where}] Error: {message}'.format(
@@ -163,20 +116,6 @@ class Scanner(object):
 
         self.add_token(
             TokenType.NUMBER, float(self.source[self._start:self._current]))
-
-    def string(self):
-        while self._peek() != '"' and not self._is_at_end():
-            if self._peek == '\n':
-                self._line += 1
-            self._advance()
-
-        # unterminated string
-        if self._is_at_end():
-            self._scan_error(self._line, self._current, 'Unterminated string.')
-
-        self._advance()
-        value = self.source[self._start + 1:self._current - 1]
-        self.add_token(TokenType.STRING, value)
 
     def _is_digit(self, c):
         return c.isdigit()

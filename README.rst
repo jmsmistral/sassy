@@ -34,12 +34,12 @@ Running **sassy** on the above text file will output the following...
    $ sassy test.txt
    here's how you call a macro:
        this text will show whenever the macro is called.
-       variables can be referenced like this: somevalue
+       variables can be referenced like this:  some value
        we can reference macro parameters just like variables: 1
 
    here's a call to the same macro with a different parameter:
        this text will show whenever the macro is called.
-       variables can be referenced like this: somevalue
+       variables can be referenced like this:  some value
        we can reference macro parameters just like variables: 2
 
 
@@ -68,12 +68,12 @@ Running **sassy** on the above text file will output the following...
     
    $ sassy test.txt
    here's how you call a macro:
-       variables can be nested to form references to other variables: somevalue
-       ...and also nest parameters as with variables: somevalue
+       variables can be nested to form references to other variables:  some value
+       ...and also nest parameters as with variables:  some value
 
    here's a call to the same macro with a different parameter:
-       variables can be nested to form references to other variables: somevalue
-       ...and also nest parameters as with variables: someothervalue
+       variables can be nested to form references to other variables:  some value
+       ...and also nest parameters as with variables:  some other value
 
 
 **Loops**
@@ -106,10 +106,10 @@ Running **sassy** on the above text file will output the following...
        this loop will execute 2 times.
 
    ...you can also use a variable to set the number of iterations:
-       this other loop will execute 0 times, and references a different variable each time: firstloop
-       this other loop will execute 1 times, and references a different variable each time: secondloop
-       this other loop will execute 2 times, and references a different variable each time: thirdloop
-       this other loop will execute 3 times, and references a different variable each time: fourthloop
+       this other loop will execute 0 times, and references a different variable each time:  first loop
+       this other loop will execute 1 times, and references a different variable each time:  second loop
+       this other loop will execute 2 times, and references a different variable each time:  third loop
+       this other loop will execute 3 times, and references a different variable each time:  fourth loop
 
 
 Installation

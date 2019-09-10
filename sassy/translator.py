@@ -163,7 +163,7 @@ class Translator(object):
                 # print('_replace_params(): found param = "' + formatName + '" in "' + text + '"')
                 text = text.replace(formatName, str(nameMap[name]))
                 text = self._replace_params(nameMap, text)
-        return text.replace(' ', '')
+        return text
 
     def _convert_param_names(self, param):
         if str(param).isdigit():

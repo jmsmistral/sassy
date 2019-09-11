@@ -1,14 +1,11 @@
-%let var1 = some value;
-%let var2 = some other value;
-
-%macro testMacro(param1);
+%macro testMacro(param1, param2);
     this text will show whenever the macro is called.
-    variables can be referenced like this: &var1.
-    we can reference macro parameters just like variables: &param1.
+    we can reference macro parameters like this: &param1.
+    we can reference macro parameters like this: &param2.
 %mend;
 
 here's how you call a macro:
-%exec testMacro(1);
+%exec testMacro(1, 2);
 
 here's a call to the same macro with a different parameter:
-%exec testMacro(2);
+%exec testMacro(this is a param, another param over here);

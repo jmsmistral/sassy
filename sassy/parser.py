@@ -177,6 +177,26 @@ class Parser(object):
                             outputTokenStack.append(token)
                             continue
                     return outputTokenStack
+                # exec tags need to include all whitespace for comma-separated
+                # params between "(" and ")"
+                if self._match(keywordToken, [TokenType.EXEC]):
+                    isPastFirstParenthesis = 0
+                    for token in tokenStack:
+                        if not self._match(token, [TokenType.LEFT_PAREN]):
+                            if self._match(token, [TokenType.SEMICOLON]):
+                                outputTokenStack.append(token)
+                                break
+                            else:
+                                if isPastFirstParenthesis == 1:
+                                    outputTokenStack.append(token)
+                                else:
+                                    if not self._match(token, self._get_whitespace_token_list()):
+                                        outputTokenStack.append(token)
+                        else:
+                            isPastFirstParenthesis = 1
+                            outputTokenStack.append(token)
+                            continue
+                    return outputTokenStack
                 else:
                     # strip all whitespace otherwise
                     for token in tokenStack:

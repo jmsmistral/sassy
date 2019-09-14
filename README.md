@@ -1,5 +1,6 @@
 # sassy
 
+[![Build Status](https://travis-ci.org/jmsmistral/sassy.svg?branch=master)](https://travis-ci.org/jmsmistral/sassy)
 
 A simple but powerful templating language for text interpolation inspired by sas macros.
 

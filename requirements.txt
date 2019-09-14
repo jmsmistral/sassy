@@ -1,1 +1,6 @@
 docopt
+nose
+setuptools
+wheel
+pip
+twine

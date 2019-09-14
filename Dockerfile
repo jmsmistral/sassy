@@ -1,8 +1,7 @@
-FROM python:3.6-alpine
+FROM python:3.6-slim
 
 WORKDIR /app
 COPY ./ ./
 RUN pip install -r requirements.txt
 
 CMD ["nosetests"]
-# CMD ["bash", "deploy.sh"]

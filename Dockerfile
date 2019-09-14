@@ -5,3 +5,4 @@ COPY ./ ./
 RUN pip install -r requirements.txt
 
 CMD ["nosetests"]
+# CMD ["bash", "deploy.sh"]

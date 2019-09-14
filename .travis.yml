@@ -13,6 +13,8 @@ before_install:
 script:
   - docker run sassy
 
-after_success:
-  - test $TRAVIS_PULL_REQUEST = "false" && test $TRAVIS_BRANCH = "master" && docker build -t sassy-deploy -f Dockerfile.deploy .
-  - test $TRAVIS_PULL_REQUEST = "false" && test $TRAVIS_BRANCH = "master" && docker run -e TWINE_USERNAME=$TWINE_USERNAME -e TWINE_PASSWORD=$TWINE_PASSWORD sassy-deploy
+deploy:
+  provider: script
+  script: test $TRAVIS_PULL_REQUEST = "false" && test $TRAVIS_BRANCH = "master" && docker run -e TWINE_USERNAME=$TWINE_USERNAME -e TWINE_PASSWORD=$TWINE_PASSWORD sassy bash deploy.sh
+  on:
+    branch: master

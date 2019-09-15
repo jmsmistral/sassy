@@ -26,14 +26,14 @@ Below is a description of each tag, with examples.
 ***test.txt***
 ```    
 %macro testMacro(param1);
-    this text will show whenever the macro is called.
-    we can reference macro parameters like this: &param1.
+    This text will show whenever the macro is called.
+    We can reference macro parameters like this: &param1.
 %mend;
 
-here's how you call a macro:
+Here's how you call a macro:
 %exec testMacro(1);
 
-here's a call to the same macro with a different parameter:
+Here's a call to the same macro with a different parameter:
 %exec testMacro(a parameter can contain spaces);
 ```
 
